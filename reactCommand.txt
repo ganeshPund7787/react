@@ -1,0 +1,14 @@
+* first command for react installation: 
+>>>>> npx create-react-app 01basicsreact
+
+* to start Rpoject 
+>>>>>> npm run start 
+       npm run build 
+       npm start
+
+* Using it create project
+>>>>> npm create vite@latest
+      npm i 
+
+      npm run dev
+      
