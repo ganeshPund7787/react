@@ -8,7 +8,10 @@ function App() {
 
   const addvalue = () => {
     if (counter < 20) {
-      const ans = setCount(counter + 1);
+      setCount((prevCounter) => prevCounter + 1);
+      setCount((prevCounter) => prevCounter + 1);
+      setCount((prevCounter) => prevCounter + 1);
+      setCount((prevCounter) => prevCounter + 1);
     } else {
       alert("You can count only 20");
     }
