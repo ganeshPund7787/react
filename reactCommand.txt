@@ -12,3 +12,31 @@
 
       npm run dev
       
+
+
+############ React Hooks    ###########
+
+1) useState(anyValue) 
+>>>>>> use: const [variableOne, functionName] = useState(default Value);
+
+2) useCallbacks();
+>>>>> use: const anyFunctionName = useCallbacks(() => {
+      anyFunctionCall();
+      Defination
+}, [depedencies, variableName]);
+
+3) useEffects()
+>>>>> use: useEffects(() => {
+      anyFunctionCall();
+      definatyion;
+},  [depedencies, variableName]) // If wer change in depedency this function is call (useEffects)
+
+4) useRef()
+>>>>> use:   const varuiableRef = useRef(null);
+      in inpout tag: ref={refValue}
+
+
+5) useId()
+>>>>>> use: Generating uniques id's for looping
+
+
