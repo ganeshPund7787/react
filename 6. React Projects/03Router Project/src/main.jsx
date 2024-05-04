@@ -11,6 +11,8 @@ import Layout from "./Layout";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
 import Contact from "./components/Contact/Conract";
+import User from "./components/Home/User";
+import GitHub, { gitHubInLoader } from "./components/Home/GitHub";
 
 // const router = createBrowserRouter([
 //   {
@@ -39,6 +41,8 @@ const router = createBrowserRouter(
       <Route path="" element={<Home />} />
       <Route path="about" element={<About />} />
       <Route path="contact" element={<Contact />} />
+      <Route path="user/:id" element={<User />} />
+      <Route loader={gitHubInLoader} path="github" element={<GitHub />} />
     </Route>
   )
 );

@@ -39,4 +39,5 @@
 5) useId()
 >>>>>> use: Generating uniques id's for looping
 
-
+6) useLoaderData()
+>>>> It's used to access loader in use data in that file
