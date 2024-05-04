@@ -41,28 +41,30 @@ function App() {
 
   return (
     <div className="text-center w-full max-w-md mx-auto shadow-md rounded-lg my-40 px-4 py-3 text-red-600 bg-gray-800">
-      <div className="text-center w-full max-w-md mx-auto shadow-md mb-4">
+      <div className="md:max-w-2xl text-center w-full max-w-md mx-auto shadow-md mb-4">
         <h1 className="text-center text-3xl my-8 decoration-4">
           Password Generator
         </h1>
 
-        <input
-          type="text"
-          value={password}
-          className="outline-none w-80 py-1.5 px-3 my-1"
-          placeholder="password"
-          readOnly
-          ref={passwordRef}
-        />
-        <button
-          onClick={copyPasswordToClicpBoard}
-          class="bg-orange-500 hover:bg-blue-700 text-white font-bold py-1.5 px-4 rounded-r-lg"
-        >
-          Copy
-        </button>
+        <div className="w-full flex ">
+          <input
+            type="text"
+            value={password}
+            className="outline-none w-[18rem] py-1.5 px-3 my-1"
+            placeholder="password"
+            readOnly
+            ref={passwordRef}
+          />
+          <button
+            onClick={copyPasswordToClicpBoard}
+            class="bg-orange-500 hover:bg-blue-700 text-white font-bold py-1.5 px-4 rounded-r-lg"
+          >
+            Copy
+          </button>
+        </div>
       </div>
 
-      <div className="flex text-lg gap-x-2">
+      <div className="flex gap-x-2">
         <div className="flex items-center gap-x-1 text-orange-500">
           <input
             type="range"
@@ -74,7 +76,7 @@ function App() {
               setLength(e.target.value);
             }}
           />
-          <label>Length: {length}</label>
+          <label className="text-xs lg:text-lg">Length: {length}</label>
         </div>
 
         <div className="flex items-center gap-x-1 text-white">
@@ -87,7 +89,9 @@ function App() {
               setNumberAllowed((prev) => !prev);
             }}
           />
-          <label htmlFor="numberInput">Number</label>
+          <label htmlFor="numberInput" className="text-xs lg:text-lg">
+            Number
+          </label>
         </div>
 
         <div className="flex items-center gap-x-1  text-green-600">
@@ -100,7 +104,9 @@ function App() {
               setCharAllowed((prev) => !prev);
             }}
           />
-          <label htmlFor="characterInput">Character</label>
+          <label htmlFor="characterInput" className="text-xs lg:text-lg">
+            Character
+          </label>
         </div>
       </div>
     </div>
