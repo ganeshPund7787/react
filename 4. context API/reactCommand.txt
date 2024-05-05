@@ -1,0 +1,58 @@
+* first command for react installation: 
+>>>>> npx create-react-app 01basicsreact
+
+* to start Rpoject 
+>>>>>> npm run start 
+       npm run build 
+       npm start
+
+* Using it create project
+>>>>> npm create vite@latest
+      npm i 
+
+      npm run dev
+      
+
+################ CONTEXT API  ####################
+
+*** context api means we create a global variable and that we are used 
+
+if we want to pass data header to child.child.child do there is so complecated 
+or not use first child data and very critical condition is there that's why we are use
+context API
+
+Redux  : redux-toolkit(RTK)
+react-redux
+
+steps: create context api file ,structure and context Provider.
+
+############ React Hooks    ###########
+
+1) useState(anyValue) 
+>>>>>> use: const [variableOne, functionName] = useState(default Value);
+
+2) useCallbacks();
+>>>>> use: const anyFunctionName = useCallbacks(() => {
+      anyFunctionCall();
+      Defination
+}, [depedencies, variableName]);
+
+3) useEffects()
+>>>>> use: useEffects(() => {
+      anyFunctionCall();
+      definatyion;
+},  [depedencies, variableName]) // If wer change in depedency this function is call (useEffects)
+
+4) useRef()
+>>>>> use:   const varuiableRef = useRef(null);
+      in inpout tag: ref={refValue}
+
+
+5) useId()
+>>>>>> use: Generating uniques id's for looping
+
+6) useLoaderData()
+>>>> It's used to access loader in use data in that file
+
+7) useContext 
+>>>> for access data from the direct context folder
