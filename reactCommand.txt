@@ -1,43 +1,27 @@
-* first command for react installation: 
->>>>> npx create-react-app 01basicsreact
+# userContext.js
 
-* to start Rpoject 
->>>>>> npm run start 
-       npm run build 
-       npm start
+import react from "react"
 
-* Using it create project
->>>>> npm create vite@latest
-      npm i 
+const UserContext = React.createContext();
 
-      npm run dev
-      
+export dfaureyfg UserContext;
 
 
-############ React Hooks    ###########
+# UserContextProvider.jsx
 
-1) useState(anyValue) 
->>>>>> use: const [variableOne, functionName] = useState(default Value);
+import react,{useContext } from "react"
+import UserContext from "/contex/userContext.js"
 
-2) useCallbacks();
->>>>> use: const anyFunctionName = useCallbacks(() => {
-      anyFunctionCall();
-      Defination
-}, [depedencies, variableName]);
+const UserContextProvider = ({children}) => {
 
-3) useEffects()
->>>>> use: useEffects(() => {
-      anyFunctionCall();
-      definatyion;
-},  [depedencies, variableName]) // If wer change in depedency this function is call (useEffects)
-
-4) useRef()
->>>>> use:   const varuiableRef = useRef(null);
-      in inpout tag: ref={refValue}
+    return (
+	<useContext.Provider>
+		{children}
+	</useContext.Provider>
+)
+}
 
 
-5) useId()
->>>>>> use: Generating uniques id's for looping
 
-6) useLoaderData()
->>>> It's used to access loader in use data in that file
+
+
