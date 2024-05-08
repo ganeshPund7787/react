@@ -1,0 +1,40 @@
+# react-router-dom is a third party liabrary;
+
+Package Download CMD: npm i react-router-dom 
+
+
+#<RouterProvider /> // in main.jsx
+>> We used to Proide routes and props are compalsory 
+<RouterProvider router={router} />
+
+#outlet : we import from the react-router-dom 
+>>> we used for changes tha divs there we use outlet
+
+
+############   Redux    ##############
+
+React => React-dom / React-native
+
+before Redux => flux is design Arcitecture by facebook
+ 
+1) for state managment
+2) data flow 
+ 
+*** Redux come from the flux
+
+Redux => Reac-redux 
+=> Redux is a state managment liabrary, redux need much more time to setup 
+
+then comes react-toolkit :: Redux-toolkit is battery included 
+in redux *#* you never modify you state you should never muted  your state *#*
+
+ 
+                                                                                < useSelectore
+Store => reducer : (Functionality Part ) In which store you want to update => 
+                                                                                < useDispatch
+
+*#* useSelectore:- for select value from the store and Slice 
+#*# useDispatch:- to set Value, Update, and changes   
+    ## Steps for setup Redux-toolkit: 
+    1> create App folder: file-store.js import configureStore from "@reduxjs/toolkit"                                                                            
+    2> Features folder : folder todo - file: todoSlice.js
