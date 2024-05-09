@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { addTodo } from "../features/todo/todoSlice";
 import { useState } from "react";
+import toast from "react-hot-toast";
 function TodoForm() {
   const [input, setInput] = useState("");
 
@@ -8,12 +9,28 @@ function TodoForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (input.trim() === "") {
+      toast.error(`You must write something`, {
+        duration: 3000,
+        icon: "🤬",
+        style: {
+          color: "#fff",
+          fontSize: "1.5rem",
+          font: "bold",
+          background: "#333",
+          borderRadius: "10px",
+        },
+      });
+      return;
+    }
     disptach(addTodo(input));
+    setInput("");
   };
 
   return (
     <form className="flex" onSubmit={handleSubmit}>
       <input
+        value={input}
         onChange={(e) => setInput(e.target.value)}
         type="text"
         placeholder="Write Todo..."
