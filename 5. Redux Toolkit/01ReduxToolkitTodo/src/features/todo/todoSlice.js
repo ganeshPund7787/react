@@ -29,6 +29,7 @@ export const todoSlice = createSlice({
             (todo.id === action.payload.todo.id ?
                 { ...todo, todo: action.payload.todo } : todo))
         },
+
         toggleComplete: (state, action) => {
             state.todos = state.todos.map((todo) =>
             (todo.id === action.payload ?

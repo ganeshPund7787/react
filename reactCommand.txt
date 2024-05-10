@@ -1,27 +1,3 @@
-# userContext.js
-
-import react from "react"
-
-const UserContext = React.createContext();
-
-export dfaureyfg UserContext;
-
-
-# UserContextProvider.jsx
-
-import react,{useContext } from "react"
-import UserContext from "/contex/userContext.js"
-
-const UserContextProvider = ({children}) => {
-
-    return (
-	<useContext.Provider>
-		{children}
-	</useContext.Provider>
-)
-}
-
-
 
 
 

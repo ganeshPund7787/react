@@ -6,12 +6,14 @@ export default function ThemeBtn() {
 
   const onChangeBtn = (e) => {
     const currentStatus = e.currentTarget.checked;
+
     if (currentStatus) {
       darkTheme();
     } else {
       lightTheme();
     }
   };
+
   return (
     <label className="relative inline-flex items-center cursor-pointer">
       <input
