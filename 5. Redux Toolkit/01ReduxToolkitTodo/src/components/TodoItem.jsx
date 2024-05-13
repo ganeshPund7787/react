@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import {
   removeTodo,
@@ -28,7 +28,7 @@ function TodoItem({ todo }) {
       });
       return;
     }
-    dispatch(updateTodo({ id: todo.id, todo: todo, ...todo }));
+    dispatch(updateTodo({ ...todo, id: todo.id, todo: todoMsg }));
     setIsTodoEditable(false);
   };
 

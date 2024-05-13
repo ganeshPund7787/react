@@ -26,14 +26,14 @@ export const todoSlice = createSlice({
 
         updateTodo: (state, action) => {
             state.todos = state.todos.map((todo) =>
-            (todo.id === action.payload.todo.id ?
-                { ...todo, todo: action.payload.todo } : todo))
+                todo.id === action.payload.id ?
+                    { ...todo, todo: action.payload.todo } : todo)
         },
 
         toggleComplete: (state, action) => {
             state.todos = state.todos.map((todo) =>
-            (todo.id === action.payload ?
-                { ...todo, complete: !todo.complete } : todo))
+                todo.id === action.payload ?
+                    { ...todo, complete: !todo.complete } : todo)
         },
 
     }
