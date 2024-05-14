@@ -8,6 +8,7 @@ import Videos from "./components/Videos";
 import Upload from "./components/Upload";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import ChatBot from "./components/ChatBot";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/upload" element={<Upload />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/chatbot" element={<ChatBot />} />
       </Routes>
       <Footer />
     </Router>

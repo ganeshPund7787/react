@@ -1,22 +1,19 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { addTodo } from "../App/TodoSlice";
 import { useDispatch } from "react-redux";
-import { addTodo, toastError } from "../App/features/TodoSlice";
 
 function TodoForm() {
   const [input, setInput] = useState("");
-  const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const disptach = useDispatch();
+
+  const submitHandler = (e) => {
     e.preventDefault();
-    if (input.trim() === "") {
-      dispatch(toastError("You must write something"));
-      return;
-    }
-    dispatch(addTodo(input));
+    disptach(addTodo(input));
     setInput("");
   };
   return (
-    <form onSubmit={handleSubmit} className="flex">
+    <form className="flex" onSubmit={submitHandler}>
       <input
         value={input}
         onChange={(e) => setInput(e.target.value)}

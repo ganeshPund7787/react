@@ -2,6 +2,7 @@ import {
   Button,
   Container,
   Heading,
+  Image,
   Input,
   Text,
   VStack,
@@ -12,6 +13,8 @@ import { Link } from "react-router-dom";
 const Login = () => {
   return (
     <Container maxW={"container.xl"} h={"100vh"} p={"16"}>
+      {/* <img src={logo.png} alt="sddf" srcset="" /> */}
+      {/* <Image src={logo.png} alt="sddf" /> */}
       <form action="">
         <VStack
           alignItems={"stretch"}

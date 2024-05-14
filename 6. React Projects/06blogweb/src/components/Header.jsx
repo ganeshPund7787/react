@@ -10,9 +10,11 @@ import {
   useDisclosure,
   VStack,
   HStack,
+  Box,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { BiMenuAltLeft } from "react-icons/bi";
+import { FaRobot } from "react-icons/fa";
 
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -34,6 +36,22 @@ const Header = () => {
         <BiMenuAltLeft size={"20"} />
       </Button>
 
+      <Box
+        zIndex={"overlay"}
+        position="fixed"
+        top="5"
+        right="20"
+        backgroundColor="cyan"
+        color="#000"
+        padding="1"
+        borderRadius="5px"
+        cursor="pointer"
+      >
+        <Link to={"/chatbot"}>
+          <FaRobot size={"25"} />
+        </Link>
+      </Box>
+
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
         <DrawerOverlay />
 
@@ -51,11 +69,15 @@ const Header = () => {
               </Button>
 
               <Button onClick={onClose} variant={"ghost"} colorScheme="cyan">
-                <Link to={"/videos?category=free"}>free videos</Link>
+                <Link to={"/videos?category=free"}>Playlist</Link>
               </Button>
 
               <Button onClick={onClose} variant={"ghost"} colorScheme="cyan">
                 <Link to={"/upload"}>upload video</Link>
+              </Button>
+
+              <Button onClick={onClose} variant={"ghost"} colorScheme="cyan">
+                <Link to={"/chatbot"}>Dout</Link>
               </Button>
             </VStack>
 

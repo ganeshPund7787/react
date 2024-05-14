@@ -1,25 +1,21 @@
-import { useState } from "react";
-import {
-  removeTodo,
-  toggleTodo,
-  updateTodo,
-  toastError,
-} from "../App/features/TodoSlice";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { deletTodo, toggleTodo, updateTodo } from "../App/TodoSlice";
 
 function TodoItem({ todo }) {
   const [isTodoEditable, setIsTodoEditable] = useState(false);
-  const [todoMsg, setTodoMsg] = useState(todo.todo);
+  const [todoMsg, setTodoMsg] = useState(todo.todoMsg);
 
   const dispatch = useDispatch();
+  const toggleCompleted = () => {
+    dispatch(toggleTodo(todo.id));
+  };
+
+  const deletetodo = () => dispatch(deletTodo(todo.id));
 
   const editTodo = () => {
-    if (todoMsg.trim() === "") {
-      return dispatch(toastError("You cannot leave empty"));
-    }
-
-    dispatch(updateTodo({ ...todo, todo: todoMsg }));
-    setIsTodoEditable((prev) => !prev);
+    dispatch(updateTodo({ ...todo, todoMsg: todoMsg }));
+    setIsTodoEditable(false);
   };
   return (
     <div
@@ -31,9 +27,8 @@ function TodoItem({ todo }) {
         type="checkbox"
         className="cursor-pointer"
         checked={todo.completed}
-        onChange={() => dispatch(toggleTodo(todo.id))}
+        onChange={toggleCompleted}
       />
-
       <input
         type="text"
         className={`border outline-none w-full bg-transparent rounded-lg ${
@@ -43,9 +38,7 @@ function TodoItem({ todo }) {
         onChange={(e) => setTodoMsg(e.target.value)}
         readOnly={!isTodoEditable}
       />
-
       {/* Edit, Save Button */}
-
       <button
         className="inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-gray-50 hover:bg-gray-100 shrink-0 disabled:opacity-50"
         onClick={() => {
@@ -60,10 +53,9 @@ function TodoItem({ todo }) {
         {isTodoEditable ? "📁" : "✏️"}
       </button>
       {/* Delete Todo Button */}
-
       <button
         className="inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-gray-50 hover:bg-gray-100 shrink-0"
-        onClick={() => dispatch(removeTodo(todo.id))}
+        onClick={deletetodo}
       >
         ❌
       </button>

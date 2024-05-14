@@ -1,3 +1,23 @@
+React + vitesetup: 
+>>>> npm create vite@latest
+
+router:
+>>>>> npm i react-router-dom 
+
+Toast message: 
+>>>> npm i react-hot-Toast
+
+redux: 
+>>> npm i react-redux
+>>>> npm i @reduxjs/toolkit
+
+***** Hokks  *****
+
+#custom hooks()
+# useState()
+# useRef()
+# useEffect()
 
 
-
+# useDisptach()
+# useSelectore()
