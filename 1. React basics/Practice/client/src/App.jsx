@@ -1,17 +1,27 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 import Header from "./components/Header";
-import Signup from "./components/Signup";
+import Home from "./pages/Home";
+import Signin from "./pages/Signin";
+import Signup from "./pages/Signup";
+import PrivateRoute from "./components/PrivateRoute";
+import Profile from "./pages/Profile";
 
 const App = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <Header />
+      <Toaster />
       <Routes>
-        {/* <Route path="/" element={ } /> */}
+        <Route path="/" element={<Home />} />
+        <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/profile" element={<Profile />} />
+        </Route>
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 };
 
