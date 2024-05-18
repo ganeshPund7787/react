@@ -1,16 +1,24 @@
 import React from "react";
-import Card from "./components/Card";
-import { useSelector } from "react-redux";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
+import Home from "./components/Home";
+import Header from "./components/Header";
+import CardStore from "./components/CardStore";
 
 const App = () => {
-  const { Products } = useSelector((state) => state.products);
-
   return (
-    <div className="flex flex-wrap space-x-3 space-y-3 justify-center items-center">
-      {Products.map((item) => (
-        <Card key={item.id} product={item} />
-      ))}
-    </div>
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/addToCard" element={<CardStore />} />
+        {/* <Route path="#" element={<Navigate to={"/"} />} /> */}
+      </Routes>
+    </Router>
   );
 };
 
