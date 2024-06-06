@@ -6,23 +6,22 @@ import {
   removeQuantity,
 } from "../app/Product/productSlice";
 import { FaTrash, FaMinus, FaPlus } from "react-icons/fa";
+import { toast } from "react-hot-toast";
 
 const AddedCards = ({ product }) => {
   const dispatch = useDispatch();
 
-  const handleclick = () => {
-    dispatch(removeFromAdd(product.id));
+  const showMessage = (message) => {
+    toast.success(message, {
+      duration: 2000,
+      style: {
+        backgroundColor: "#fff",
+      },
+    });
   };
 
-  const addQuantityHandle = () => {
-    dispatch(addQuantity(product.id));
-  };
-
-  const removeQuantityHandle = () => {
-    dispatch(removeQuantity(product.id));
-  };
   return (
-    <div className="h-[25rem] py-3 px-4 my-5 mx-4 bg-slate-100">
+    <div className="h-[26rem] w-[17rem] p-5 bg-slate-200">
       <div className="h-[14rem]">
         <img
           src={product.imageUrl}
@@ -45,15 +44,33 @@ const AddedCards = ({ product }) => {
       </div>
 
       <div className="mt-2 flex justify-start gap-5 py-2">
-        <button onClick={handleclick} className=" hover:text-red-500">
+        <button
+          onClick={() => {
+            showMessage("Remove Card");
+            return dispatch(removeFromAdd(product.id));
+          }}
+          className="hover:text-red-500"
+        >
           <FaTrash />
         </button>
 
-        <button onClick={addQuantityHandle} className="">
+        <button
+          onClick={() => {
+            showMessage(`Add Quantity ${product.quantity + 1}`);
+            dispatch(addQuantity(product.id));
+          }}
+          className="bg-orange-500 p-2 rounded-full"
+        >
           <FaPlus />
         </button>
-
-        <button onClick={removeQuantityHandle} className="">
+        {product.quantity}
+        <button
+          onClick={() => {
+            showMessage(`Remove 1 Quantity}`);
+            dispatch(removeQuantity(product.id));
+          }}
+          className="bg-orange-500 p-2 rounded-full"
+        >
           <FaMinus />
         </button>
       </div>

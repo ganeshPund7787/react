@@ -579,3 +579,14 @@ export const Products = [
     },
 
 ]
+
+
+
+
+export const ImgaeURLS = [
+    "https://i.pinimg.com/originals/c0/c0/68/c0c0688a33511ddf927c2e9f2af478ca.jpg",
+    "https://i.pinimg.com/originals/c0/c0/68/c0c0688a33511ddf927c2e9f2af478ca.jpg",
+    "https://thumbs.dreamstime.com/z/group-friends-shopping-mall-together-55900815.jpg",
+    "https://thumbs.dreamstime.com/b/group-people-shopping-concept-95181744.jpg",
+    "https://img.freepik.com/free-vector/fashion-sale-with-discount-template_23-2148936503.jpg"
+];

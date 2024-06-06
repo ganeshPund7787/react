@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Card from "./Card";
 import AddedCards from "./AddedCards";
 
 const CardStore = () => {
@@ -11,7 +10,7 @@ const CardStore = () => {
       <div className="text-start px-5 py-5 text-2xl font-bold">
         Collection :-
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap gap-5">
         {CartItems.map((item) => (
           <div key={item.id}>
             <AddedCards product={item} />
