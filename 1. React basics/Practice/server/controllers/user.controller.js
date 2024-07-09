@@ -110,3 +110,40 @@ export const deletuser = async (req, res, next) => {
         next(error)
     }
 }
+
+export const GoogleAuth = async (req, res, next) => {
+    try {
+        const { username, email, profileImage } = req.body;
+        const isUserExist = await User.findOne({ email });
+
+        if (isUserExist) {
+            const cookie = jwt.sign({ _id: isUserExist._id }, process.env.SECREATE_KEY);
+            const { password, userData } = isUserExist._doc;
+            res.cookie("cookie", cookie, {
+                httpOnly: true,
+                maxAge: 12 * 24 * 60 * 60 * 1000
+            }).status(201).json(userData);
+            return;
+        }
+
+        const GeneratePassword = Math.floor(Math.random() * 100000000 + 10000000).toString();
+        const hashedPassword = bcryptjs.hashSync(GeneratePassword, 10);
+        const newUser = new User({
+            username, email, profileImage, password: hashedPassword
+        })
+
+        await newUser.save();
+        const cookie = jwt.sign({ _id: newUser._id }, process.env.SECREATE_KEY);
+
+        const { password, ...rest } = newUser._doc;
+
+        res.cookie("cookie", cookie, {
+            httpOnly: true,
+            maxAge: 12 * 24 * 60 * 60 * 1000
+        }).status(202).json(rest);
+
+    } catch (error) {
+        console.log(`Error While GoogleAuth`);
+        next(error);
+    }
+}

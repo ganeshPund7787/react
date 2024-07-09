@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -19,9 +19,9 @@ const Header = () => {
           {currentUser ? (
             <Link to={"/profile"}>
               <img
-                className="h-[1.3rem] rounded-2xl"
                 src={currentUser.profileImage}
-                alt=""
+                alt="demo"
+                className="h-[1.5rem]"
               />
             </Link>
           ) : (

@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-hot-toast";
-import { signinFail, signinStart, signinSuccess } from "../app/user/userSlice";
+import { fetchFail, fetchStart, fetchSuccess } from "../app/feature/userSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-hot-toast";
+import OAuth from "../components/OAuth";
 
 const Signin = () => {
   const [formData, setFormData] = useState({});
-  const { loading } = useSelector((state) => state.user);
-  const navigate = useNavigate();
+  const naviagte = useNavigate();
   const dispatch = useDispatch();
-
+  const { loading } = useSelector((state) => state.user);
   const onChangeHandle = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     try {
+      dispatch(fetchStart());
       e.preventDefault();
-      dispatch(signinStart());
       const res = await fetch("/api/user/signin", {
         method: "POST",
         headers: {
@@ -25,40 +25,33 @@ const Signin = () => {
         },
         body: JSON.stringify(formData),
       });
+
       const data = await res.json();
 
       if (data.success === false) {
-        dispatch(signinFail());
+        dispatch(fetchFail());
         toast.error(data.message, {
-          duration: 2000,
-          style: {
-            color: "#000",
-            backgroundColor: "#fff",
-          },
+          duration: 3000,
+          style: { borderRadius: "10px", color: "#333", background: "#fff" },
         });
-
         return;
       }
 
       if (data) {
-        dispatch(signinSuccess(data));
-        toast.success(`welcome, ${data.username}`, {
-          duration: 2000,
-          style: {
-            color: "#000",
-            backgroundColor: "#fff",
-          },
+        dispatch(fetchSuccess(data));
+        console.log(data);
+
+        toast.success(`welcome , ${data.username}`, {
+          duration: 3000,
+          style: { borderRadius: "10px", color: "#333", background: "#fff" },
         });
-        navigate("/");
+        naviagte("/");
       }
     } catch (error) {
-      dispatch(signinFail());
+      dispatch(fetchFail());
       toast.error(error.message, {
-        duration: 2000,
-        style: {
-          color: "#000",
-          backgroundColor: "#fff",
-        },
+        duration: 3000,
+        style: { borderRadius: "10px", color: "#333", background: "#fff" },
       });
     }
   };
@@ -69,17 +62,15 @@ const Signin = () => {
           className="mx-auto h-10 w-auto"
           src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
           alt="Your Company"
+          title="logo"
         />
-        <h2
-          className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight
-         text-gray-900 uppercase"
-        >
-          SIGN IN
+        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 uppercase">
+          Sign in
         </h2>
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form className="space-y-6" method="POST" onSubmit={handleSubmit}>
+        <form className="space-y-6" onSubmit={handleSubmit}>
           <div>
             <div className="mt-2">
               <input
@@ -94,7 +85,6 @@ const Signin = () => {
               />
             </div>
           </div>
-
           <div>
             <div className="mt-2">
               <input
@@ -112,16 +102,21 @@ const Signin = () => {
 
           <div>
             <button
+              disabled={loading}
               type="submit"
-              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-indigo-400 disabled:cursor-not-allowed"
             >
-              {loading ? "LOADING..." : "Sign In"}
+              {loading ? `LOADING...` : `SIGN IN`}
             </button>
+          </div>
+          <hr />
+          <div>
+            <OAuth />
           </div>
         </form>
 
         <p className="mt-10 text-center text-sm text-gray-500">
-          dont have an account?{" "}
+          New member?{" "}
           <Link
             to="/signup"
             className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
